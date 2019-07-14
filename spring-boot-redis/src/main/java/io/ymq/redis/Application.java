@@ -1,16 +1,13 @@
 package io.ymq.redis;
 
-import java.io.IOException;
-
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.redis.core.RedisTemplate;
 
-import io.ymq.redis.utils.CacheUtils;
+import io.ymq.redis.service.RedisServiceImpl;
 
 /**
  * 描述: 启动服务
@@ -20,14 +17,13 @@ import io.ymq.redis.utils.CacheUtils;
  **/
 @SpringBootApplication
 @ComponentScan(value = {"io.ymq.redis"})
-public class Application {
+public class Application implements ApplicationRunner{
 	@Autowired
-    private RedisTemplate<String, String> redisTemplate;
-    public static void main(String[] args) throws IOException {
+	private   RedisServiceImpl redis;
+    public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-        for(int i=0;i<1000000;i++) {
-        	redisTemplate.for
-        }
-
+    }
+	public void run(ApplicationArguments args) throws Exception {
+        redis.test();
     }
 }
