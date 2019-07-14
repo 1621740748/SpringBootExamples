@@ -1,11 +1,16 @@
-package io.ymq.redis.run;
+package io.ymq.redis;
 
+import java.io.IOException;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.redis.core.RedisTemplate;
 
-import java.io.IOException;
-import java.net.ServerSocket;
+import io.ymq.redis.utils.CacheUtils;
 
 /**
  * 描述: 启动服务
@@ -16,16 +21,12 @@ import java.net.ServerSocket;
 @SpringBootApplication
 @ComponentScan(value = {"io.ymq.redis"})
 public class Application {
-
+	@Autowired
+    private RedisTemplate<String, String> redisTemplate;
     public static void main(String[] args) throws IOException {
         SpringApplication.run(Application.class, args);
-
-        while (true) {
-            //为了简单起见，所有的异常信息都往外抛
-            int port = 8989;
-            //定义一个ServerSocket监听在端口8989上
-            ServerSocket server = new ServerSocket(port);
-            server.accept();
+        for(int i=0;i<1000000;i++) {
+        	redisTemplate.for
         }
 
     }

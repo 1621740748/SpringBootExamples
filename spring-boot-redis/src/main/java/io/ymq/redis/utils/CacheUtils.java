@@ -11,12 +11,12 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.springframework.data.redis.connection.RedisZSetCommands;
-import org.springframework.data.redis.connection.RedisZSetCommands.Tuple;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.Feature;
@@ -26,6 +26,7 @@ import com.alibaba.fastjson.parser.Feature;
  * author: yanpenglei
  * Date: 2017/10/13 15:01
  */
+@Service
 public class CacheUtils {
 
     @Resource
